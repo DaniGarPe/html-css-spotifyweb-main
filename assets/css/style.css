@@ -1,0 +1,559 @@
+/* Global rules */
+
+@font-face{
+    font-family: 'GothamBook';
+    src: url("../fonts/GothamBook.ttf") format("truetype");
+}
+
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #000000 #383838;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #38383838;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(21,25,34,1);
+    border-radius: 10px;
+    border: 3px solid #00000040;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #000000;
+    border-radius: 10px;
+    border: 3px solid #383838;
+}
+
+
+* {
+    font-size: 0.9rem;
+    font-family: 'GothamBook';
+    font-weight: bold;
+}
+h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+h2 {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+body > div {
+    height: 100vh!important;
+    width: 100vw!important;
+}
+
+/* ------------------------------------- */
+
+svg {
+    color: white;
+    margin: 5px;
+    margin-left: 30px;
+}
+
+span {
+    color: rgb(195, 195, 195);
+    margin: 5px;
+    margin-left: 10px;
+}
+
+#logo {
+    margin-left: 30px;
+}
+
+#menu {
+    width: 25px;
+    height: 25px;
+}
+
+#create-playlist {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-right: 10px;
+    align-content: center;
+}
+
+.bi-plus {
+    color: #000;
+    font-size: 30px !important;
+    align-content: center;
+}
+
+#favorites {
+    background: rgb(73,37,179);
+    background: linear-gradient(135deg, rgb(51, 26, 126) 20%, rgb(104, 87, 155) 60%, rgb(200, 200, 200) 100%);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-right: 10px;
+    align-content: center;
+
+}
+
+.bi-collection {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+}
+
+#download {
+    margin-left: 0px;
+}
+
+.bi-arrow-down-circle {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+/* ------------------------------------- */
+
+
+
+.bi-heart-fill {
+    color: rgb(160, 160, 160);
+    font-size: 15px !important;
+    align-content: center;
+}
+
+.bg-black {
+    background-color: black;
+}
+.bg-fading-black {
+    background-color: #00000069;
+}
+.bg-dark-blue {
+    background: rgb(73,37,179);
+    background: linear-gradient(170deg, rgb(61, 31, 151) 0%, rgba(21,25,34,1) 25%);
+}
+.bg-grey {
+    background-color: #a3a3a3;
+}
+.bg-dark-grey {
+    background-color: #181818;
+}
+.text-grey {
+    color: #717171;
+}
+.text-black {
+    color: #000;
+}
+.border-grey {
+    border-color: #717171!important;
+}
+
+ul {
+    list-style-type: none;
+}
+a {
+    color: #717171;
+    text-decoration: none;
+}
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* Sidebar rules */ 
+
+#sidebar {
+    height: calc(100vh - 90px);
+    width: 215px;
+    z-index: 2;
+}
+
+#sidebar #logo {
+    height: 90px;
+}
+#sidebar #sidebar_options img {
+    width: 30px;
+}
+
+#sidebar #sidebar_options a:hover * {
+    color: white;
+    filter: brightness(1)!important;
+}
+#sidebar #sidebar_options img:not(#home) {
+    filter: brightness(0.5);
+}
+
+#sidebar .square {
+    width: 35px;
+    height: 35px;
+}
+#sidebar .square i {
+    font-size: 20px;
+}
+#sidebar .create_playlist:hover .square {
+    background-color: white;
+}
+
+#sidebar .create_playlist:hover .square {
+    background: rgb(255, 255, 255);
+}
+
+#sidebar .create_playlist:hover .square i{
+    color: rgb(0, 0, 0);
+}
+
+#sidebar #playlist_entries {
+    height: calc(40vh - 90px);
+    overflow-y: auto;
+}
+
+#sidebar .favorites:hover .square {
+    background: rgb(73,37,179);
+    background: linear-gradient(135deg, rgba(73,37,179,1) 20%, rgba(138,115,206,1) 60%, rgb(255, 255, 255) 100%);
+}
+
+#sidebar .favorites:hover .square i{
+    color: rgb(255, 255, 255);
+    font-size: 15px !important;
+    align-content: center;
+}
+
+#sidebar #profile a img {
+    width: 18px;
+}
+.user_img {
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/profile.svg);
+    background-position: center;
+    background-size: 100%;
+}
+#sidebar #user div:last-child {
+    font-size: 1rem;
+}
+
+/* Sidebar XS rules */
+
+#profile-xs a:last-child {
+    width: 20px;
+    height: 20px;
+}
+#profile-xs a:last-child img {
+    width: 65%;
+}
+#profile-xs a:first-child img {
+    width: 18px;
+}
+
+/* Upgrade bar rules */
+
+#upgrade_bar {
+    height: 70px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.455);
+}
+#upgrade_bar a {
+    padding: 2px 0;
+    white-space: nowrap;
+    color: #fff;
+    border-color: #717171;
+}
+#upgrade_bar a:hover {
+    transform: scale(1.1);
+    border-color: #fff;
+}
+
+.dropdown {
+    margin-right: 40px;
+    margin-left: 40px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    border: 0;
+}
+
+.dropdown-toggle {
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-right: 5px;
+}
+
+.dropdown-toggle svg {
+    width: 20px;
+    height: 20px;
+    background-color: #565656;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.dropdown-item {
+    margin: 10px;
+}
+
+/* Main content rules */
+
+main {
+    height: calc(100vh - 90px);
+    padding-top: 90px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.card-bg-color {
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.playlist {
+    background: rgb(21,25,34);
+    background: linear-gradient(180deg, rgba(21,25,34,0.7) 0%, rgba(31,40,60,0.5) 60%);
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.playlist:hover {
+    background: rgb(21,25,34);
+    background: linear-gradient(180deg, rgba(21,25,34,0.5) 0%, rgba(45,55,77,1) 60%);
+}
+
+.artist {
+    background: rgba(0, 0, 0, 0);
+}
+
+.playlist_overlay {
+    top: 0;
+}
+.playlist_overlay i {
+    font-size: 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.playlist a:first-child:hover .playlist_overlay {
+    display: block!important;
+}
+
+.playlist-bg {
+    background: rgb(21,25,34);
+    background: linear-gradient(90deg, rgba(21,25,34,0) 0%, rgba(0,0,0,0.7) 15%);
+}
+
+.playlist-bg:hover {
+    background: rgb(21,25,34);
+    background: linear-gradient(90deg, rgba(21,25,34,0) 0%, rgba(21,25,34,1) 16%, rgba(45,55,77,1) 60%);
+}
+
+.playlist_overlay-fav i {
+    font-size: 3.3rem;
+}
+.playlist-fav div:first-child:hover .playlist_overlay-fav {
+    display: block!important;
+}
+
+.play-icon {
+    color: #1ed760;
+}
+
+/* Now playing bar */
+
+#now_playing {
+    height: 90px;
+}
+#now_playing i {
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#song_info img {
+    width: 50px;
+    min-width: 25px;
+}
+
+#media_icons svg {
+    color: #8a8a8a;
+}
+#media_icons svg:hover {
+    color: #ffffff;
+}
+
+#media_icons svg:nth-child(3) {
+    font-size: 27px;
+    color: #fff;
+}
+#media_icons svg:nth-child(3):hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+#media_icons svg:nth-child(5) {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+}
+
+#progress_bar {
+    background-color: #565656;
+    height: 4px;
+    width: 100%;
+}
+#progress_bar:hover .slider {
+    background-color: #1ed760;
+}
+#progress_bar:hover .slider_handle {
+    display: block!important;
+}
+
+#volume svg {
+    color: #8a8a8a;
+}
+
+#volume svg:hover {
+    color: #ffffff;
+}
+
+#volume_bar {
+    background-color: #565656;
+    height: 4px;
+    width: 100px; 
+}
+#volume_bar:hover .slider {
+    background-color: #1ed760;
+}
+#volume_bar:hover .slider_handle {
+    display: block!important;
+}   
+
+.slider {
+    background-color: #bdbdbd;
+}
+.slider_handle {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: white;
+    height: 12px;
+    width: 12px;
+}
+
+.footer-title {
+    color: #fff;
+}
+
+.footer-text {
+    color: #8a8a8a;
+}
+
+.footer-text:hover {
+    color: #fff;
+}
+
+/* Media queries */ 
+
+@media screen and (max-width: 576px) {
+    svg {
+        margin: 0;
+    }
+    
+    span {
+        margin: 0;
+    }
+    
+    #logo {
+        margin: 0;
+    }
+
+    #logo-small {
+        margin: 0;
+        width: 20;
+        height: 20;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #menu-small {
+        margin: 0;
+        width: 20;
+        height: 20;
+        margin-bottom: 20px;
+    }
+    
+    #sidebar {
+        width: 40px;
+        padding: 5px 8px!important;
+    }
+    .disappear {
+        display: none!important;
+    }
+    .appear {
+        display: block!important;
+    }
+    .appear-flex {
+        display: flex!important;
+    }
+    .playlist_overlay i {
+        font-size: 3.5rem;
+    }
+    #now_playing {
+        justify-content: space-around!important;
+    }
+    #now_playing > div:nth-child(2) {
+        width: auto!important;
+    }
+    #song_info {
+        margin-right: 5px!important;
+    }
+    #progress_bar {
+        width: 20vw;
+    }
+
+    .overflow-auto {
+        scrollbar-width: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .overflow-auto::-webkit-scrollbar {
+        display: none;
+    }
+
+}

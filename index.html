@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi Spotify</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    </head>
+    <body class="overflow-hidden bg-dark-blue" onload="mostrarSaludo()">
+        <div class="container-fluid d-flex px-0">
+            <!-- Left sidebar --> 
+            <nav id="sidebar" class="d-flex justify-content-between flex-column fixed-left flex-shrink-0 px-0 text-grey bg-black">
+                <div class="wrapper">
+                    <!-- Logo -->
+                    <a href="/" id="logo" class="d-flex align-items-center py-3 pl-3 disappear">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-spotify m-1" viewBox="0 0 16 16">
+                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z"/>
+                        </svg>
+                        <h1>Spotify</h1>
+                    </a>
+                    <!-- Logo for XS devices -->
+                    <a class="d-none appear mb-4" href="/">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="logo-small" fill="currentColor" class="bi bi-spotify" viewBox="0 0 16 16">
+                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z"/>
+                        </svg>
+                    </a>
+                    <!-- Sidebar options -->
+                    <ul id="sidebar_options" class="px-0 disappear">
+                        <li class="position-relative pl-3 mb-2">
+                            <a class="d-flex align-items-center" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" id="menu" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                                </svg>
+                                <span class="">Inicio</span>
+                            </a>                    
+                        </li>
+                        <li class="pl-3 mb-2">
+                            <a class="d-flex align-items-center" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" id="menu" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                                <span class="ml-2">Buscar</span>
+                            </a>                            
+                        </li>
+                        <li class="pl-3 mb-2">
+                            <a class="d-flex align-items-center" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" id="menu" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+                                    <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+                                </svg>
+                                <span class="ml-2">Tu bliblioteca</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Sidebar options for XS devices -->
+                    <div class="d-none appear">
+                        <a href="#" class="d-block mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="menu-small" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="d-block mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="menu-small" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="d-block mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="menu-small" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
+                                <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+                                <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+                                <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+                                <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <!-- Playlist options -->
+                    <ul id="playlist_options" class="pl-3 pr-0 disappear">
+                        <li class="my-3">
+                            <a href="#" class="create_playlist d-flex align-items-center mt-3">
+                                <div id="create-playlist" class="d-flex justify-content-center align-items-center square text-black bg-grey">
+                                    <i class="bi bi-plus"></i>
+                                </div>
+                                <div class="ml-2">Crear lista</div>
+                            </a>
+                        </li>
+                        <li class="my-3">
+                            <a href="#" class="favorites d-flex align-items-center">
+                                <div id="favorites" class="d-flex justify-content-center align-items-center square text-black bg-grey">
+                                    <i class="bi bi-heart-fill"></i>
+                                </div>
+                                <div class="ml-2">Canciones que te gustan</div>
+                            </a>
+                        </li>
+                        <li id="playlist_entries">
+                            <ul class="px-0 mt-3">
+                                <li class="mb-3">
+                                    <a id="playlist_1" href="#">Rock Clásico</a>
+                                </li>
+                                <li class="my-3">
+                                    <a id="playlist_2" href="#">Canta en el coche</a>
+                                </li>
+                                <li class="my-3">
+                                    <a id="playlist_3" href="#">Música española</a>
+                                </li>
+                                <li class="my-3">
+                                    <a id="playlist_4" href="#">Party Mix 2022</a>
+                                </li>
+                                <li class="my-3">
+                                    <a id="playlist_5" href="#">Eterno verano</a>
+                                </li>
+                                <li class="my-3">
+                                    <a id="playlist_6" href="#">Avicci tribute</a>
+                                </li>
+                                <li class="my-3">
+                                    <a id="playlist_7" href="#">Pop remix</a>
+                                </li>
+                                <li class="my-3">
+                                    <a id="playlist_8" href="#">Lista de fiesta</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul> 
+                </div>
+                <!-- Profile options -->
+                <div id="profile" class="d-flex flex-column disappear">
+                    <a href="#" id="download" class="d-flex align-items-center pb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                        </svg>
+                        <div class="ml-3">Instalar app</div>
+                    </a>
+                </div>
+                <!-- Profile options for XS devices -->
+                <div id="profile-xs" class="d-none appear-flex flex-column align-items-center">
+                    <a href="#" class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+            <!-- App content -->
+            <main class="d-flex flex-column w-100 px-5 text-grey">
+                <!-- Fixed top bar -->
+                <div id="upgrade_bar" class="d-flex justify-content-end align-items-center fixed-top">
+                    <a href="#" class="btn rounded-pill px-2 text-white">Mejora tu cuenta</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+                            Daniel G.
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item" href="#">Cuenta</a></li>
+                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Sube a Premiun</a></li>
+                            <li><a class="dropdown-item" href="#">Asistencia</a></li>
+                            <li><a class="dropdown-item" href="#">Descargar</a></li>
+                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- "Recently played" row of playlists -->
+                <div class="container-fluid">
+                    <h1 id="txtsaludo" class="pl-2 text-white mt-3 mb-3"></h1>
+                    <div class="container">
+                        <div id="saludo" class="row row-cols-2 row-cols-sm-3 h-100">
+                            <div class="playlist-fav card-bg-color p-1 px-1">
+                                <div class="row playlist-bg m-1 rounded align-items-center p-0">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid rounded" src="./assets/img/like.png" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-start">
+                                            <h5 class="text-white">Canciones que te gustan</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-none playlist_overlay-fav">
+                                        <i class="play-icon bi bi-play-circle-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="playlist-fav card-bg-color p-1 px-1">
+                                <div class="row playlist-bg m-1 rounded align-items-center p-0">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid rounded" src="./assets/img/espanolMix.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-start">
+                                            <h5 class="text-white">Español Mix</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-none playlist_overlay-fav">
+                                        <i class="play-icon bi bi-play-circle-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="playlist-fav card-bg-color p-1 px-1">
+                                <div class="row playlist-bg m-1 rounded align-items-center p-0">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid rounded" src="./assets/img/dailyuno.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-start">
+                                            <h5 class="text-white">Daily Mix 1</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-none playlist_overlay-fav">
+                                        <i class="play-icon bi bi-play-circle-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="playlist-fav card-bg-color p-1 px-1">
+                                <div class="row playlist-bg m-1 rounded align-items-center p-0">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid rounded" src="./assets/img/exitosESP.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-start">
+                                            <h5 class="text-white">Éxitos España</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-none playlist_overlay-fav">
+                                        <i class="play-icon bi bi-play-circle-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="playlist-fav card-bg-color p-1 px-1">
+                                <div class="row playlist-bg m-1 rounded align-items-center p-0">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid rounded" src="./assets/img/puraEnergia.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-start">
+                                            <h5 class="text-white">Pura energía</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-none playlist_overlay-fav">
+                                        <i class="play-icon bi bi-play-circle-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="playlist-fav card-bg-color p-1 px-1">
+                                <div class="row playlist-bg m-1 rounded align-items-center p-0">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid rounded" src="./assets/img/coche.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-start">
+                                            <h5 class="text-white">Canta en el coche</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-none playlist_overlay-fav">
+                                        <i class="play-icon bi bi-play-circle-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h1 class="pl-2 text-white mt-5">Escuchado recientemente</h1>
+                    <div class="row flex-nowrap overflow-auto">
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/like.png" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Canciones que te gustan</h2>
+                            </a>                               
+                            <a href="#" class="text-center">
+                                <span id="heavymetal">225 canciones</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/espanolMix.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Español Mix</h2>
+                            </a>
+                            <a href="#" class="text-center">
+                                <span id="strangerthings">Música española elegida para ti</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/exitosESP.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Exitos España</h2>
+                            </a>                      
+                            <a href="#" class="text-center">
+                                <span id="aquietplace">Los hits de ahora en la plylist mas grande d...</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/dailyuno.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Daily Mix 1</h2>
+                            </a>                           
+                            <a href="#" class="text-center">
+                                <span id="split">Martin Garrix, Avicci, Calvin Harris y más </span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/puraEnergia.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Pura energia</h2>
+                            </a>                         
+                            <a href="#" class="text-center">
+                                <span id="acureforwellness">El subidon de música que necesitas</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/dailytres.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Daily Mix 3</h2>
+                            </a>                       
+                            <a href="#" class="text-center">
+                                <span id="sinister">Nil Moliner, Efecto pasillo, Boyd y más</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- "Created for you" row of playlists -->
+                <div class="container-fluid">
+                    <h1 class="pl-2 text-white mt-5">Especialmente para ti</h1>
+                    <div class="row flex-nowrap overflow-auto">
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/dailydos.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Daily Mix 2</h2>
+                            </a>                               
+                            <a href="#" class="text-center">
+                                <span id="heavymetal">Miki Nuñez, El Canto del loco y más</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/dailytres.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Daily Mix 3</h2>
+                            </a>
+                            <a href="#" class="text-center">
+                                <span id="strangerthings">Nil Moliner, Efecto pasillo, Boyd y más</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/dailycuatro.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Daily Mix 4</h2>
+                            </a>                      
+                            <a href="#" class="text-center">
+                                <span id="aquietplace">Bud Bunny, Morat, Sebastian Yatra y más</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/split.jpeg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Daily Mix 5</h2>
+                            </a>                           
+                            <a href="#" class="text-center">
+                                <span id="split">AC/DC, Creedence Clearwater Revival y más </span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/dailyseis.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Daily Mix 6</h2>
+                            </a>                         
+                            <a href="#" class="text-center">
+                                <span id="acureforwellness">Bizarrap, Duki y más</span>
+                            </a>
+                        </div>
+                        <div class="playlist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                            <a class="position-relative" href="#">
+                                <img class="img-fluid mt-2 rounded" src="./assets/img/rutadiaria.jpg" alt="">
+                                <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black">
+                                    <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <h2 class="mt-3 text-white text-center">Ruta diaria</h2>
+                            </a>                       
+                            <a href="#" class="text-center">
+                                <span id="sinister">Un mix de noticias y música, hecho para ti</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- "Most popular artists" row of playlists -->
+                <div class="container-fluid">
+                    <h1 class="pl-2 text-white mt-5">Artistas recomendados</h1>
+                    <div class="row flex-nowrap overflow-auto">
+                            <div class="playlist artist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                                <a class="position-relative" href="#">
+                                    <img class="img-fluid rounded-circle" src="./assets/img/youg.jpeg" alt="">
+                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black rounded-circle">
+                                        <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <h2 class="mt-3 text-white text-center">Lana del Rey</h2>
+                                </a>                               
+                            </div>
+    
+                            <div class="playlist artist col-6 col-md-3 col-lg-2 d-flex flex-column mb-3 px-2 rounded">
+                                <a class="position-relative" href="#">
+                                    <img class="img-fluid rounded-circle" src="./assets/img/einaudi.jpeg" alt="">
+                                    <div class="playlist_overlay position-absolute d-none w-100 h-100 bg-fading-black rounded-circle">
+                                        <i class="play-icon position-absolute bi bi-play-circle-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <h2 class="mt-3 text-white text-center">Ludovico Einaudi</h2>
+                                </a>
+                            </div>
+                    </div>
+                </div>
+                
+                <!-- "Footer" -->   
+                <div class="py-5 mt-5">
+                    <div class="row footer">
+                      <div class="col-6 col-md-2 mb-3">
+                        <h5 class="footer-title">Empresa</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Acerca de</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Empleo</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">For the record</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-6 col-md-2 mb-3">
+                        <h5 class="footer-title">Comunidades</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Para artistas</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Desarrolladores</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Publicidad</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Inversores</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Proveedores</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-6 col-md-2 mb-3">
+                        <h5 class="footer-title">Enlaces útiles</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">Asistencia</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="footer-text nav-link p-0">App gratis para móvil</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-5 offset-md-1 mb-3">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                                </svg>
+                            </button>
+                            <button class="btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                                </svg>
+                            </button>
+                            <button class="btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                </svg>
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column flex-sm-row justify-content-around  border-top">
+                        <div class="d-flex flex-column flex-sm-row">
+                            <a class="m-3" href="">Legal</a>
+                            <a class="m-3" href="">Centro de privacidad</a>
+                            <a class="m-3" href="">Política de privacidad</a>
+                            <a class="m-3" href="">Configuración de cookies</a>
+                            <a class="m-3" href="">Información sobre los anuncios</a>
+                        </div>
+                        <p class="d-flex flex-column flex-sm-row justify-content-end py-2 my-2">© 2022 Spotify AB</p>
+                    </div>
+                </div>
+            </main>
+            <!-- Now-playing bar -->
+            <footer id="now_playing" class="d-flex justify-content-between align-items-center px-sm-3 fixed-bottom bg-dark-grey">
+                <!-- Left section (current song) -->
+                <div id="song_info" class="d-flex align-items-center">
+                    <a href="#">
+                        <img class="img-fluid" src="./assets/img/sinister.jpeg" alt="">
+                    </a>
+                    <div class="disappear ml-2 mr-4">
+                        <a href="#" class="d-block text-white ms-3">Sinister</a>
+                        <a href="#" id="current_song" class="text-grey ms-3">Nome Brano</a>
+                    </div>
+                    <div class="disappear d-flex flex-wrap">
+                        <a href="#" id="media_icons" class="mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg>
+                        </a>
+                        <a href="#" id="media_icons">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pip" viewBox="0 0 16 16">
+                                <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                                <path d="M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Central section (media controls) -->
+                <div class="d-flex flex-column text-white w-50 mx-2 mx-sm-4">
+                    <div id="media_icons" class="d-flex justify-content-center align-items-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mt-3 mx-3 mx-sm-3 bi bi-shuffle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="mt-3 mx-3 mx-sm-3 bi bi-skip-start-fill" viewBox="0 0 16 16">
+                            <path d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0V4z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="mt-3 mx-3 mx-sm-3 bi bi-play-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="mt-3 mx-3 mx-sm-3 bi bi-skip-end-fill" viewBox="0 0 16 16">
+                            <path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0V4z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mt-3 mx-3 mx-sm-3 bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                        </svg>
+                    </div>
+                    <div id="media_bar" class="d-flex align-items-center">
+                        <span class="font-weight-normal">0:25</span>
+                        <div id="progress_bar" class="mx-4 rounded-pill">
+                            <div class="slider position-relative w-25 h-100 rounded-pill">
+                                <div class="slider_handle position-absolute d-none rounded-circle"></div>
+                            </div>
+                        </div>
+                        <span class="font-weight-normal">4:35</span>
+                    </div>
+                </div>
+                <!-- Right section (volume and miscellaneous) -->
+                <div id="volume" class="disappear align-items-center d-flex text-white ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-mic mx-2" viewBox="0 0 16 16">
+                        <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-music-note-list mx-2" viewBox="0 0 16 16">
+                        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+                        <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+                        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+                        <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pc-display mx-2" viewBox="0 0 16 16">
+                        <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-volume-up mx-2" viewBox="0 0 16 16">
+                        <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                        <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                        <path d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z"/>
+                    </svg>
+                    <div id="volume_bar" class="rounded-pill">
+                        <div class="slider position-relative w-25 h-100 rounded-pill">
+                            <div class="slider_handle position-absolute d-none rounded-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+        <script>
+            function mostrarSaludo(){
+ 
+                fecha = new Date(); 
+                hora = fecha.getHours();
+
+                if(hora >= 0 && hora < 12){
+                    texto = "¡Buenos días!";
+                }
+
+                if(hora >= 12 && hora < 18){
+                    texto = "¡Buenas tardes!";
+                }
+
+                if(hora >= 18 && hora < 24){
+                    texto = "¡Buenas noches!";
+                
+                }
+
+                document.getElementById('txtsaludo').innerHTML = texto;
+
+            }
+        </script>
+        <script>
+            window.document.body.div.main.onscroll = function() {
+                scrollFunction()
+            };
+
+            
+            function scrollFunction() {
+              if (document.body.div.main.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("upgrade_bar").style.backgroundColor = "blue";
+              } else {
+                document.getElementById("upgrade_bar").style.backgroundColor = "green";
+              }
+            }
+
+
+            $(window).on("scroll", function () {
+                if ($(window).scrollTop() > $("#cambio").offset().top - 50) {
+                    $("nav").addClass("active");
+                } else {
+                    $("nav").removeClass("active");
+                };
+            });
+
+        </script>
+    </body>
+</html>
